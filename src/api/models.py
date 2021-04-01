@@ -19,13 +19,16 @@ class User(db.Model):
             "name": self.name
             # do not serialize the password, its a security breach
         }
-    def create_user():
-        body= request.get_json()
-        user=User()
-        users.user=body["usuario"]
+    @classmethod
+    def create_user(cls,emial, password):
+        user=cls()
+        user.name="name"
+        user.email="email"
+        user.password= "password"
+        user.is_active= True
         db.session.add(user)
         db.session.commit()
-        return jsonify (user.serialize()), 200
+      
 
 
        

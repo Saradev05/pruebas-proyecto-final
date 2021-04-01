@@ -15,6 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -41,6 +42,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			createUser: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/register")
+					.then(resp => resp.json())
+					.then(data => setC({ message: data.message }))
+					.catch(error => console.log("Error ", error));
 			}
 		}
 	};

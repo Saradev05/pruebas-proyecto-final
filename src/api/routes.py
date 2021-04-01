@@ -20,10 +20,10 @@ def handle_hello():
 
 
 @api.route('/register', methods=['POST'])
-def register_user():
-    
+def register():
+    body= request.get_json()
+    User.create_user(body["email"],body["password"])
     response = {
-        "message": "Hello! I'm a message that came from the backend"
+        "message": "puedes registrarte aquí"
         }
-
-    return jsonify(response_body), 200
+    return jsonify ({}), 200
